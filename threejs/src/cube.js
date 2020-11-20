@@ -16,16 +16,20 @@ function init() {
 
   const geometry = new THREE.BoxGeometry(1, 1, 1);
 
+  // 1.
   // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 
+  // 2.
   // const texture = new THREE.TextureLoader().load('textures/bvbb.jpg');
   // const material = new THREE.MeshBasicMaterial({ color: 0xffffff, map: texture });
 
+  // 3.
   // const texture = new THREE.TextureLoader().load('textures/syrocon.jpg');
   // const material = new THREE.MeshBasicMaterial({ color: 0xffffff, map: texture });
 
   const loader = new THREE.CubeTextureLoader();
   loader.setPath('textures/');
+  // 4.
   // const textureCube = loader.load([
   //   'mira-1.jpg',
   //   'mira-2.jpg',
@@ -34,6 +38,7 @@ function init() {
   //   'mira-5.jpg',
   //   'mira-6.jpg'
   // ]);
+  // 5.
   const textureCube = loader.load([
     'flower-1.jpg',
     'flower-2.jpg',

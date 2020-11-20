@@ -2,7 +2,7 @@ let scene, camera, renderer, cube
 
 const DEG_TO_RAD = Math.PI / 100;
 
-function main() {
+function init() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x000000);
 
@@ -51,4 +51,12 @@ function main() {
   animate();
 }
 
-window.onload = main;
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+window.addEventListener('resize', onWindowResize, false);
+
+window.onload = init;

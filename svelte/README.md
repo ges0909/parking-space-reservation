@@ -2,7 +2,7 @@
 
 ---
 
-# svelte app
+# Svelte app
 
 This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
 
@@ -109,7 +109,7 @@ surge public my-project.surge.sh
 npm install --save-dev @rollup/plugin-json
 ```
 
-Import the plugin into _rollup.config.js_ configuration file:
+Import plugin into _rollup.config.js_ configuration file:
 
 ```js
 import json from '@rollup/plugin-json';
@@ -124,18 +124,22 @@ export default {
 };
 ```
 
-Import the local _package.json_ file into your app:
+Import local _package.json_ file into your app:
 
 ```js
 import pkg from './package.json';
 console.log(`running version ${pkg.version}`);
 ```
 
-## Serve index.html
+Further details see [@rollup/plugin-json](https://www.npmjs.com/package/@rollup/plugin-json).
+
+## Live server
 
 ```bash
 python -m http.server --directory public/
 ```
+
+or
 
 ```bash
 npx http-server
