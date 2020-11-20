@@ -1,10 +1,36 @@
+<!DOCTYPE html>
 <html>
 
-<head></head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SVG Demo</title>
+
+  <style>
+    body {
+      margin: 0;
+    }
+
+    rect {
+      fill: #00f;
+      fill-opacity: 0.2;
+      stroke: #000;
+      stroke-width: 0.1
+    }
+  </style>
+</head>
 
 <body>
-  <object data="cube.svg" type="image/svg+xml" width="600" height="193">
-  </object>
+
+  <svg viewBox="-100 -100 300 300">
+    <g id="cube">
+      <rect width="21" height="24" transform="skewY(30)" />
+      <rect width="21" height="24" transform="skewY(-30) translate(21 24.3)" />
+      <rect width="21" height="21" transform="scale(1.41,.81) rotate(45) translate(0 -21)" />
+    </g>
+  </svg>
+
 </body>
 
 </html>
