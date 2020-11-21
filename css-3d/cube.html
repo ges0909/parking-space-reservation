@@ -130,7 +130,7 @@
   <div class="scene">
     <div class="cube">
       <div class="cube__face cube__face--front">
-        <a onclick="clicked()">front</a>
+        <a onclick="clicked('front')">front</a>
       </div>
       <div class="cube__face cube__face--back">back</div>
       <div class="cube__face cube__face--right">right</div>
@@ -182,8 +182,8 @@
   </script>
 
   <script>
-    function clicked() {
-      console.log("clicked")
+    function clicked(face) {
+      alert(face + " clicked")
     }
   </script>
 </body>
