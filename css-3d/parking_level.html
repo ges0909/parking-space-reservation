@@ -1,0 +1,68 @@
+<html>
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equ="X-UA-Compatible" content="ie=edge" />
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
+
+  <title>
+    Parking Level
+  </title>
+
+  <style>
+    * {
+      font-family: 'Lato';
+    }
+
+    body {
+      display: flex;
+    }
+
+    .scene {
+      width: 100%;
+      height: 100%;
+      margin: 2em;
+      border: 1px solid #ccc;
+
+      /* This is important! for z-axis effects */
+      perspective: 10em;
+    }
+
+    .level {
+      width: 100%;
+      height: 50%;
+      background-color: #0379ff;
+      opacity: 0.1;
+      line-height: 10em;
+      text-align: center;
+      vertical-align: middle;
+      color: #FFF;
+      border: 10px solid;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="scene">
+    <div class="level" id="level" onclick="rotate()">Parking Level</div>
+  </div>
+
+  <script>
+    var deg = 0
+    function rotate() {
+      deg = deg + 10;
+      if (deg == 360) {
+        deg = 0;
+      }
+      div = document.getElementById("level");
+      div.style.transform = 'rotateX(' + deg + 'deg)';
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+
+  <title>Rectangle</title>
+
+  <style>
+    .scene {
+      /* keep aspect ratio */
+      padding: 10px;
+      background: white;
+      box-sizing: border-box;
+      /* resize: horizontal; */
+      border: 1px dashed;
+      overflow: auto;
+      max-width: 100%;
+      height: calc(100vh - 20px);
+      /* */
+    }
+
+    .rectangle {
+      width: 100%;
+      padding-bottom: 50%;
+      background-color: gold;
+      opacity: 0.7;
+      /* border */
+      border-style: solid;
+      border-width: thin;
+      border-color: grey;
+      border-radius: 10px;
+      /* center label horizontally and vertically  */
+      position: relative;
+    }
+
+    .label {
+      /* background-color: orange; */
+      font-size: 500%;
+      font-weight: bold;
+      color: white;
+      /* center label horizontally and vertically */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="scene">
+    <div class="rectangle">
+      <div class="label">1</div>
+    </div>
+  </div>
+
+  <script src="src/event.js"></script>
+
+</body>
+
+</html>
