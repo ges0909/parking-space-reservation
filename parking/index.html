@@ -9,23 +9,26 @@
 
   <style>
     .scene {
-      /* keep aspect ratio */
       padding: 10px;
-      background: white;
-      box-sizing: border-box;
-      /* resize: horizontal; */
       border: 1px dashed;
+      background: lightgrey;
+      /* keep aspect ratio when resized */
+      /* resize: horizontal; */
+      box-sizing: border-box;
       overflow: auto;
       max-width: 100%;
       height: calc(100vh - 20px);
-      /* */
+      /**/
+      perspective: 500px;
+      /* perspective-origin: 100%; */
     }
 
     .rectangle {
-      width: 100%;
-      padding-bottom: 50%;
       background-color: gold;
       opacity: 0.7;
+      /* aspect ratio 2:1 */
+      width: 100%;
+      padding-bottom: 50%;
       /* border */
       border-style: solid;
       border-width: thin;
@@ -36,8 +39,7 @@
     }
 
     .label {
-      /* background-color: orange; */
-      font-size: 500%;
+      font-size: 25vw;
       font-weight: bold;
       color: white;
       /* center label horizontally and vertically */
@@ -46,13 +48,18 @@
       left: 50%;
       transform: translate(-50%, -50%);
     }
+
+    .rectangle.perspective {
+      transform-origin: bottom;
+      transform: rotateX(0deg);
+    }
   </style>
 </head>
 
 <body>
 
   <div class="scene">
-    <div class="rectangle">
+    <div class="rectangle perspective">
       <div class="label">1</div>
     </div>
   </div>
