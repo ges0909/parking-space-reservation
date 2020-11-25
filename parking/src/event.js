@@ -1,45 +1,25 @@
-function getRotationAngle(el) {
-  const style = window.getComputedStyle(el, null);
-  // console.log(style)
-  const matrix = style.getPropertyValue("transform");
-  console.log(matrix);
-  let values = matrix.split('(')[1];
-  values = values.split(')')[0];
-  values = values.split(',');
-  // console.log(values);
-  const a = values[0];
-  const b = values[1];
-  const c = values[2];
-  const d = values[3];
-  // console.log(`a=${a}, b=${b}, c=${c}, d=${d}`)
-  const radians = Math.atan2(b, a);
-  if (radians < 0) {
-    radians += (2 * Math.PI);
-  }
-  const angle = Math.round(radians * (180 / Math.PI));
-  console.log(angle)
-  return angle
+var scale = 1
+var angleX = 0
+var angleY = 0
+
+const rectangle = document.querySelector(".rectangle");
+
+function scale2d(ev) { // WheelEvent
+  scale = (ev.deltaY < 0) ? scale - 0.05 : scale + 0.05;
+  rectangle.style.transform = `scale(${scale}) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
 }
 
-var angle
-
-function rotateX(ev) {
-  angle = (angle) ? angle + 20 : 20;
-  console.log(angle)
-  rectangle = document.querySelector(".rectangle");
-  // angle = getRotationAngle(rectangle) + 20;
-  rectangle.style.transform = `rotateX(${angle}deg)`;
+function rotateXY(ev) { // MouseEvent
+  angleY += (ev.movementX / 2);
+  angleX += (ev.movementY / 2);
+  rectangle.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) scale(${scale})`;
 }
 
-function wheel(ev) { // WheelEvent
-  console.log(`dy=${ev.deltaY}`)
+function move(ev) {  // MouseEvent
+  // console.log(ev)
+  // console.log(`x=${ev.x}, y=${ev.y}`)
+  console.log(`x=${ev.movementX}, y=${ev.movementY}`)
 }
 
-function move(event) {  // MouseEvent
-  console.log(`x=${event.clientX}, y=${event.clientY}`)
-}
-
-document.querySelector(".scene").onclick = rotateX;
-// document.querySelector(".rectangle").onwheel = wheel;
-// document.querySelector(".rectangle").onmousemove = move;
-
+document.querySelector(".scene").onwheel = scale2d;
+document.querySelector(".scene").onmousemove = rotateXY;
