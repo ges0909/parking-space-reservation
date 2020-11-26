@@ -1,17 +1,17 @@
 let x = 0;
-let y = 0;
-let degX = 0;
+let y = 25;
+let degX = 60;
 let degY = 0;
-let scale = 1;
+let scale = .7;
 let leftButton = false;
 let rightButton = false;
 
+const transform = () => {
+  return `translate3d(${x}px, ${y}px, 0px) rotateX(${degX}deg) rotateY(${degY}deg) scale(${scale})`;
+}
+
 const group = document.querySelector(".group");
 group.style.transform = transform();
-
-function transform() {
-  return `translateX(${x}px) translateY(${y}px) rotateX(${degX}deg) rotateY(${degY}deg) scale(${scale})`;
-}
 
 function mousemove(ev) { // MouseEvent
   if (leftButton) {
@@ -56,8 +56,10 @@ function wheel(ev) { // WheelEvent
   group.style.transform = transform();
 }
 
+
 document.querySelector(".scene").onmousemove = mousemove;
 document.querySelector(".scene").onmousedown = mousedown;
 document.querySelector(".scene").onmouseup = mouseup;
 document.querySelector(".scene").onwheel = wheel;
 
+document.oncontextmenu = (ev) => { return ev.preventDefault(); } // suppress context menu
