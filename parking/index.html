@@ -5,7 +5,7 @@
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
 
-  <title>Rectangle</title>
+  <title>Parking</title>
 
   <style>
     .scene {
@@ -19,43 +19,61 @@
       max-width: 100%;
       height: calc(100vh - 20px);
       /**/
-      perspective: 500px;
+      perspective: 1500px;
       perspective-origin: center center;
+      ;
+    }
+
+    .group {
+      transform-style: preserve-3d;
     }
 
     .rectangle {
       margin: 0 auto;
-      background-color: gold;
-      opacity: 0.7;
+      opacity: 0.5;
       /* center horizontally */
       /* margin: 0 auto; */
-      /* aspect ratio 2:1 */
+      /* set aspect ratio 2:1 */
       width: 100%;
       padding-bottom: 50%;
       /* border */
       border-style: solid;
       border-width: thin;
-      border-color: grey;
+      border-color: #eae2b7;
       border-radius: 10px;
-      /* center label horizontally and vertically  */
-      position: relative;
+      /* center horizontally and vertically  */
+      position: absolute;
     }
 
     .label {
       font-size: 25vw;
       font-weight: bold;
-      color: white;
-      /* center label horizontally and vertically */
+      color: #003049;
+      /* center horizontally and vertically */
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      /* disable text select */
+      user-select: none;
     }
 
-    .rectangle.perspective {
-      /* transform-origin: bottom; */
-      transform: rotateX(0deg);
-      transform-style: preserve-3d;
+    .level_1 {
+      z-index: 1;
+      transform: translateZ(0px);
+      background-color: #d62828;
+    }
+
+    .level_2 {
+      z-index: 2;
+      transform: translateZ(-200px);
+      background-color: #f77f00;
+    }
+
+    .level_3 {
+      z-index: 3;
+      transform: translateZ(-400px);
+      background-color: #fcbf49;
     }
   </style>
 </head>
@@ -63,8 +81,16 @@
 <body>
 
   <div class="scene">
-    <div class="rectangle perspective">
-      <div class="label">1</div>
+    <div class="group">
+      <div class="rectangle level_1">
+        <div class="label">1</div>
+      </div>
+      <div class="rectangle level_2">
+        <div class="label">2</div>
+      </div>
+      <div class="rectangle level_3">
+        <div class="label">3</div>
+      </div>
     </div>
   </div>
 
