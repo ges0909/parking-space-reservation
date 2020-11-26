@@ -45,13 +45,17 @@
       font-size: 25vw;
       font-weight: bold;
       color: white;
-      /* center horizontally and vertically */
+      /* center label horizontally and vertically */
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      /* disable text select */
-      user-select: none;
+    }
+
+    .rectangle.perspective {
+      /* transform-origin: bottom; */
+      transform: rotateX(0deg);
+      transform-style: preserve-3d;
     }
   </style>
 </head>
@@ -59,7 +63,7 @@
 <body>
 
   <div class="scene">
-    <div class="rectangle">
+    <div class="rectangle perspective">
       <div class="label">1</div>
     </div>
   </div>
