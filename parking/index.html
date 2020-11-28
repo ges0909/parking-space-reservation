@@ -24,11 +24,11 @@
       ;
     }
 
-    .group {
+    .garage {
       transform-style: preserve-3d;
     }
 
-    .rectangle {
+    .level {
       margin: 0 auto;
       opacity: 0.7;
       /* center horizontally */
@@ -45,7 +45,7 @@
       position: absolute;
     }
 
-    .rectangle label {
+    .level label {
       font-size: 25vw;
       font-weight: bold;
       color: #003049;
@@ -58,22 +58,36 @@
       user-select: none;
     }
 
-    .level_1 {
+    .level._1 {
       z-index: 1;
       transform: translateZ(0px);
       background-color: #d62828;
     }
 
-    .level_2 {
+    .level._2 {
       z-index: 2;
       transform: translateZ(-200px);
       background-color: #f77f00;
     }
 
-    .level_3 {
+    .level._3 {
       z-index: 3;
       transform: translateZ(-400px);
       background-color: #fcbf49;
+    }
+
+    .lot {
+      position: absolute;
+      font-size: 2em;
+      font-weight: bold;
+      color: #003049;
+      background-color: #eae2b7;
+      opacity: .7;
+    }
+
+    .lot:hover {
+      color: #eae2b7;
+      background-color: #003049;
     }
   </style>
 </head>
@@ -81,20 +95,24 @@
 <body>
 
   <div class="scene">
-    <div class="group">
-      <div class="rectangle level_1">
+    <div class="garage">
+      <div class="level _1">
         <label>1</label>
+        <button type="button" value="101" class="lot" style="left:10px;top:10px;width:100px;height:50px;"
+          onclick="parking.click()">101</button>
+        <button type="button" value="102" class="lot" style="left:10px;top:60px;width:100px;height:50px;"
+          onclick="parking.click()">102</button>
       </div>
-      <div class="rectangle level_2">
+      <div class="level _2">
         <label>2</label>
       </div>
-      <div class="rectangle level_3">
+      <div class="level _3">
         <label>3</label>
       </div>
     </div>
   </div>
 
-  <script src="src/event.js"></script>
+  <script src="src/parking.js"></script>
 
 </body>
 

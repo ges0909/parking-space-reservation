@@ -140,7 +140,7 @@
     </div>
   </div>
 
-  <p class="radio-group">
+  <p class="radio-garage">
     <label>
       <input type="radio" name="rotate-cube-side" value="front" checked /> front
     </label>
@@ -163,11 +163,11 @@
 
   <script>
     var cube = document.querySelector('.cube');
-    var radioGroup = document.querySelector('.radio-group');
+    var radiogarage = document.querySelector('.radio-garage');
     var currentClass = '';
 
     function changeSide() {
-      var checkedRadio = radioGroup.querySelector(':checked');
+      var checkedRadio = radiogarage.querySelector(':checked');
       var showClass = 'show-' + checkedRadio.value;
       if (currentClass) {
         cube.classList.remove(currentClass);
@@ -178,7 +178,7 @@
     // set initial side
     changeSide();
 
-    radioGroup.addEventListener('change', changeSide);
+    radiogarage.addEventListener('change', changeSide);
   </script>
 
   <script>
