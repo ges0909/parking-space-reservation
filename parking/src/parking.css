@@ -7,7 +7,7 @@
   overflow: hidden;
   max-width: 100%;
   height: calc(100vh - 20px);
-  /* */
+  /* perspective */
   perspective: 1500px;
   perspective-origin: center center;
 }
@@ -17,24 +17,22 @@
 }
 
 .level {
-  margin: 0 auto;
-  opacity: 0.7;
-  /* center horizontally */
-  /* margin: 0 auto; */
-  /* set aspect ratio 2:1 */
   width: 100%;
-  padding-bottom: 50%;
+  height: 50vh;
+  opacity: 0.7;
+  /* grid */
+  display: grid;
+  grid-template-rows: repeat(7, calc(100% / 7));
+  grid-template-columns: repeat(10, calc(100% / 10));
   /* border */
   border-style: solid;
   border-width: thin;
   border-color: #eae2b7;
   border-radius: 10px;
-  /* center horizontally and vertically  */
+  /* stack panes one above the other */
   position: absolute;
-  /* grid */
-  display: grid;
-  grid-template-rows: repeat(5, calc(100% / 5));
-  grid-template-columns: repeat(10, calc(100% /10));
+  /* disable text select */
+  user-select: none;
 }
 
 .level label {
@@ -46,8 +44,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* disable text select */
-  user-select: none;
 }
 
 .level:nth-child(3n + 1) {
@@ -65,13 +61,14 @@
   background-color: #fcbf49;
 }
 
-/* .lot {
+.lot {
   font-size: 2vw;
   font-weight: bold;
   color: #003049;
-  background-color: #eae2b7;
-  opacity: .7;
-} */
+  background-color: rgba(255, 2550, 255, .2);
+  border: 0;
+  text-align: center;
+}
 
 .lot:hover {
   color: #eae2b7;
