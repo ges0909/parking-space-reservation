@@ -1,0 +1,53 @@
+<html>
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equ="X-UA-Compatible" content="ie=edge" />
+
+  <title>CSS Grid Layout</title>
+
+  <style>
+    .container {
+      display: grid;
+      /* display: inline-grid; */
+      /* grid-template-rows: 33.3% 33.3% 33.3%; */
+      grid-template-rows: repeat(3, calc(100% / 3));
+      /* grid-template-rows: repeat(auto-fill, minmax(200px, 1fr)); */
+      /* grid-template-columns: 20% 20% 20% 20% 20%; */
+      grid-template-columns: repeat(5, calc(100% /5));
+      /* grid-template-columns: 20% 30%; */
+      grid-gap: 5px;
+      column-gap: 5px;
+      padding: 10px;
+      border: 1px dotted grey;
+      background-color: lightyellow;
+      /* keep aspect ratio when resized */
+      overflow: hidden;
+      max-width: 100%;
+      height: calc(100vh - 20px);
+    }
+
+    .item {
+      background-color: lightgrey;
+      border: 1px dotted grey;
+      text-align: center;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <button class="item" style="grid-row:1;grid-column:1;">one</button>
+    <button class="item" style="grid-row:1;grid-column:2;">two</button>
+    <button class="item" style="grid-row:1;grid-column:3;">one two three four five</button>
+    <button class="item" style="grid-row:2;grid-column:1;">four</button>
+    <button class="item" style="grid-row:2;grid-column:2;">five</button>
+  </div>
+
+</body>
+
+</html>

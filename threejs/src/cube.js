@@ -20,15 +20,15 @@ function init() {
   // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 
   // 2.
-  // const texture = new THREE.TextureLoader().load('textures/bvbb.jpg');
-  // const material = new THREE.MeshBasicMaterial({ color: 0xffffff, map: texture });
+  const texture = new THREE.TextureLoader().load('textures/bvbb.jpg');
+  const material = new THREE.MeshBasicMaterial({ color: 0xffffff, map: texture });
 
   // 3.
   // const texture = new THREE.TextureLoader().load('textures/syrocon.jpg');
   // const material = new THREE.MeshBasicMaterial({ color: 0xffffff, map: texture });
 
-  const loader = new THREE.CubeTextureLoader();
-  loader.setPath('textures/');
+  // const loader = new THREE.CubeTextureLoader();
+  // loader.setPath('textures/');
   // 4.
   // const textureCube = loader.load([
   //   'mira-1.jpg',
@@ -39,15 +39,15 @@ function init() {
   //   'mira-6.jpg'
   // ]);
   // 5.
-  const textureCube = loader.load([
-    'flower-1.jpg',
-    'flower-2.jpg',
-    'flower-3.jpg',
-    'flower-4.jpg',
-    'flower-5.jpg',
-    'flower-6.jpg'
-  ]);
-  const material = new THREE.MeshBasicMaterial({ color: 0xffffff, envMap: textureCube });
+  // const textureCube = loader.load([
+  //   'flower-1.jpg',
+  //   'flower-2.jpg',
+  //   'flower-3.jpg',
+  //   'flower-4.jpg',
+  //   'flower-5.jpg',
+  //   'flower-6.jpg'
+  // ]);
+  // const material = new THREE.MeshBasicMaterial({ color: 0xffffff, envMap: textureCube });
 
   cube = new THREE.Mesh(geometry, material);
 
