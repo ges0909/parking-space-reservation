@@ -1,0 +1,81 @@
+    .scene {
+      padding: 10px;
+      border: 1px dashed;
+      background: lightgrey;
+      /* resize: horizontal; */
+      /* keep aspect ratio when resized */
+      box-sizing: border-box;
+      overflow: hidden;
+      max-width: 100%;
+      height: calc(100vh - 20px);
+      /**/
+      perspective: 1500px;
+      perspective-origin: center center;
+      ;
+    }
+
+    .garage {
+      transform-style: preserve-3d;
+    }
+
+    .level {
+      margin: 0 auto;
+      opacity: 0.7;
+      /* center horizontally */
+      /* margin: 0 auto; */
+      /* set aspect ratio 2:1 */
+      width: 100%;
+      padding-bottom: 50%;
+      /* border */
+      border-style: solid;
+      border-width: thin;
+      border-color: #eae2b7;
+      border-radius: 10px;
+      /* center horizontally and vertically  */
+      position: absolute;
+    }
+
+    .level label {
+      font-size: 25vw;
+      font-weight: bold;
+      color: #003049;
+      /* center horizontally and vertically */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /* disable text select */
+      user-select: none;
+    }
+
+    .level:nth-child(3n+1) {
+      z-index: 1;
+      transform: translateZ(0px);
+      background-color: #d62828;
+    }
+
+    .level:nth-child(3n+2) {
+      z-index: 2;
+      transform: translateZ(-200px);
+      background-color: #f77f00;
+    }
+
+    .level:nth-child(3n+3) {
+      z-index: 3;
+      transform: translateZ(-400px);
+      background-color: #fcbf49;
+    }
+
+    .lot {
+      position: absolute;
+      font-size: 2vw;
+      font-weight: bold;
+      color: #003049;
+      background-color: #eae2b7;
+      opacity: .7;
+    }
+
+    .lot:hover {
+      color: #eae2b7;
+      background-color: #003049;
+    }

@@ -5,114 +5,32 @@
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
 
-  <title>Parking</title>
+  <title>Reserve a parking space</title>
 
-  <style>
-    .scene {
-      padding: 10px;
-      border: 1px dashed;
-      background: lightgrey;
-      /* resize: horizontal; */
-      /* keep aspect ratio when resized */
-      box-sizing: border-box;
-      overflow: hidden;
-      max-width: 100%;
-      height: calc(100vh - 20px);
-      /**/
-      perspective: 1500px;
-      perspective-origin: center center;
-      ;
-    }
-
-    .garage {
-      transform-style: preserve-3d;
-    }
-
-    .level {
-      margin: 0 auto;
-      opacity: 0.7;
-      /* center horizontally */
-      /* margin: 0 auto; */
-      /* set aspect ratio 2:1 */
-      width: 100%;
-      padding-bottom: 50%;
-      /* border */
-      border-style: solid;
-      border-width: thin;
-      border-color: #eae2b7;
-      border-radius: 10px;
-      /* center horizontally and vertically  */
-      position: absolute;
-    }
-
-    .level label {
-      font-size: 25vw;
-      font-weight: bold;
-      color: #003049;
-      /* center horizontally and vertically */
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      /* disable text select */
-      user-select: none;
-    }
-
-    .level._1 {
-      z-index: 1;
-      transform: translateZ(0px);
-      background-color: #d62828;
-    }
-
-    .level._2 {
-      z-index: 2;
-      transform: translateZ(-200px);
-      background-color: #f77f00;
-    }
-
-    .level._3 {
-      z-index: 3;
-      transform: translateZ(-400px);
-      background-color: #fcbf49;
-    }
-
-    .lot {
-      position: absolute;
-      font-size: 2em;
-      font-weight: bold;
-      color: #003049;
-      background-color: #eae2b7;
-      opacity: .7;
-    }
-
-    .lot:hover {
-      color: #eae2b7;
-      background-color: #003049;
-    }
-  </style>
+  <link rel="stylesheet" href="src/parking.css">
 </head>
 
 <body>
 
   <div class="scene">
     <div class="garage">
-      <div class="level _1">
+      <div class="level">
         <label>1</label>
-        <button type="button" value="101" class="lot" style="left:10px;top:10px;width:100px;height:50px;"
-          onclick="parking.click()">101</button>
-        <button type="button" value="102" class="lot" style="left:10px;top:60px;width:100px;height:50px;"
-          onclick="parking.click()">102</button>
+        <button type="button" value="101" class="lot" style="left:10px;top:10px;width:100px;height:50px;">101</button>
+        <button type="button" value="102" class="lot" style="left:10px;top:60px;width:100px;height:50px;">102</button>
       </div>
-      <div class="level _2">
+      <div class="level">
         <label>2</label>
+        <button type="button" value="201" class="lot" style="left:10px;top:10px;width:100px;height:50px;">201</button>
       </div>
-      <div class="level _3">
+      <div class=" level">
         <label>3</label>
+        <button type="button" value="301" class="lot" style="left:10px;top:10px;width:100px;height:50px;">301</button>
       </div>
     </div>
   </div>
 
-  <script src="src/parking.js"></script>
+  <script src=" src/parking.js"></script>
 
 </body>
 

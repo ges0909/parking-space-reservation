@@ -6,6 +6,7 @@ class Parking {
   scale = 1; // .7;
   leftButton = false;
   rightButton = false;
+  metaKey = false;
 
   constructor() {
     this.garage = document.querySelector(".garage");
@@ -17,33 +18,34 @@ class Parking {
   }
 
   mousemove = (ev) => { // MouseEvent
+    let horizontal = Math.abs(ev.movementX) > Math.abs(ev.movementY);
     if (this.leftButton) {
-      if (Math.abs(ev.movementX) > Math.abs(ev.movementY)) {
-        this.x += ev.movementX;
-      }
-      else {
-        this.y += ev.movementY;
-      }
-      this.garage.style.transform = this.transform();
+      this.x = horizontal ? this.x + ev.movementX : this.x;
+      this.y = horizontal ? this.y : this.y + ev.movementY;
     }
     else if (this.rightButton) {
-      if (Math.abs(ev.movementX) > Math.abs(ev.movementY)) {
+      if (horizontal) {
         this.degY += (ev.movementX < 0 ? -1 : 1);
       } else {
         this.degX += (ev.movementY < 0 ? -1 : 1);
       }
-      this.garage.style.transform = this.transform();
     }
+    else if (this.metaKey) {
+
+    }
+    this.garage.style.transform = this.transform();
   }
 
   mousedown = (ev) => { // MouseEvent
     this.leftButton = ev.button == 0;
     this.rightButton = ev.button == 2;
+    this.metaKey = ev.metaKey
   }
 
   mouseup = (ev) => { // MouseEvent
     this.leftButton = false;
-    this.rightButton = false
+    this.rightButton = false;
+    this.metaKey = ev.metaKey;
   }
 
   wheel = (ev) => { // WheelEvent
@@ -52,7 +54,7 @@ class Parking {
   }
 
   click = (ev) => { // MouseEvent
-    console.log("clicked")
+    console.log(ev.target.value)
   }
 
 }
@@ -63,5 +65,8 @@ document.querySelector(".scene").onmousemove = parking.mousemove;
 document.querySelector(".scene").onmousedown = parking.mousedown;
 document.querySelector(".scene").onmouseup = parking.mouseup;
 document.querySelector(".scene").onwheel = parking.wheel;
+
+lots = document.querySelectorAll(".lot");
+lots.forEach(lot => lot.onclick = parking.click);
 
 document.oncontextmenu = (ev) => { return ev.preventDefault(); } // suppress context menu
