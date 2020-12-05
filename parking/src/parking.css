@@ -8,7 +8,7 @@
   max-width: 100%;
   height: calc(100vh - 20px);
   /* perspective */
-  perspective: 1500px;
+  perspective: 500px;
   perspective-origin: center center;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .level {
-  width: 100%;
+  width: 100vh;
   height: 50vh;
   opacity: 0.7;
   /* grid */
@@ -25,9 +25,7 @@
   grid-template-rows: repeat(7, calc(100% / 7));
   grid-template-columns: repeat(10, calc(100% / 10));
   /* border */
-  border-style: solid;
-  border-width: thin;
-  border-color: #eae2b7;
+  border-style: 1px thin #eae2b7;
   border-radius: 10px;
   /* stack panes one above the other */
   position: absolute;
@@ -37,8 +35,8 @@
 
 .level label {
   font-size: 25vw;
-  font-weight: bold;
-  color: #003049;
+  color: #eae2b7;
+  opacity: 0.3;
   /* center horizontally and vertically */
   position: absolute;
   top: 50%;
@@ -47,27 +45,31 @@
 }
 
 .level:nth-child(3n + 1) {
+  z-index: 0;
   transform: translateZ(0px);
   background-color: #d62828;
 }
 
 .level:nth-child(3n + 2) {
+  z-index: 1;
   transform: translateZ(-200px);
   background-color: #f77f00;
 }
 
 .level:nth-child(3n + 3) {
+  z-index: 2;
   transform: translateZ(-400px);
   background-color: #fcbf49;
 }
 
 .lot {
-  font-size: 2vw;
+  font-size: 1.5em;
   font-weight: bold;
   color: #003049;
-  background-color: rgba(255, 2550, 255, .2);
-  border: 0;
-  text-align: center;
+  background-color: rgba(255, 2550, 255, 0.2);
+  /* border */
+  border-style: thin solid #003049;
+  border-radius: 5px;
 }
 
 .lot:hover {

@@ -1,72 +1,85 @@
-class Parking {
-  x = 0;
-  y = 0; // 25;
-  degX = 0; // 60;
-  degY = 0;
-  scale = 1; // .7;
-  leftButton = false;
-  rightButton = false;
-  metaKey = false;
+class Parking3D {
+  x = 0
+  y = 0 // 25;
+  degX = 0 // 60;
+  degY = 0
+  scale = 1 // .7;
+  leftButton = false
+  rightButton = false
 
   constructor() {
-    this.garage = document.querySelector(".garage");
-    this.garage.style.transform = this.transform();
+    document.querySelector('.garage').style.transform = this.transform() // initial transform
   }
 
   transform = () => {
-    return `translate3d(${this.x}px, ${this.y}px, 0px) rotateX(${this.degX}deg) rotateY(${this.degY}deg) scale(${this.scale})`;
+    return `translate3d(${this.x}px, ${this.y}px, 0px) rotateX(${this.degX}deg) rotateY(${this.degY}deg) scale(${this.scale})`
   }
 
-  mousemove = (ev) => { // MouseEvent
-    let horizontal = Math.abs(ev.movementX) > Math.abs(ev.movementY);
+  mousemove = (ev) => {
+    // MouseEvent
+    let horizontal = Math.abs(ev.movementX) > Math.abs(ev.movementY)
     if (this.leftButton) {
-      this.x = horizontal ? this.x + ev.movementX : this.x;
-      this.y = horizontal ? this.y : this.y + ev.movementY;
-    }
-    else if (this.rightButton) {
+      this.x = horizontal ? this.x + ev.movementX : this.x
+      this.y = horizontal ? this.y : this.y + ev.movementY
+    } else if (this.rightButton) {
       if (horizontal) {
-        this.degY += (ev.movementX < 0 ? -1 : 1);
+        this.degY += ev.movementX < 0 ? -1 : 1
       } else {
-        this.degX += (ev.movementY < 0 ? -1 : 1);
+        this.degX += ev.movementY < 0 ? -1 : 1
       }
     }
-    else if (this.metaKey) {
+    document.querySelector('.garage').style.transform = this.transform()
+  }
 
+  mousedown = (ev) => {
+    // MouseEvent
+    this.leftButton = ev.button == 0
+    this.rightButton = ev.button == 2
+  }
+
+  mouseup = (ev) => {
+    // MouseEvent
+    this.leftButton = false
+    this.rightButton = false
+  }
+
+  wheel = (ev) => {
+    // WheelEvent
+    if (ev.altKey) {
+      this.rotate()
+    } else {
+      this.scale = ev.deltaY < 0 ? this.scale - 0.05 : this.scale + 0.05
+      document.querySelector('.garage').style.transform = this.transform()
     }
-    this.garage.style.transform = this.transform();
   }
 
-  mousedown = (ev) => { // MouseEvent
-    this.leftButton = ev.button == 0;
-    this.rightButton = ev.button == 2;
-    this.metaKey = ev.metaKey
-  }
-
-  mouseup = (ev) => { // MouseEvent
-    this.leftButton = false;
-    this.rightButton = false;
-    this.metaKey = ev.metaKey;
-  }
-
-  wheel = (ev) => { // WheelEvent
-    this.scale = (ev.deltaY < 0) ? this.scale - 0.05 : this.scale + 0.05;
-    this.garage.style.transform = this.transform();
-  }
-
-  click = (ev) => { // MouseEvent
+  click = (ev) => {
+    // MouseEvent
     console.log(ev.target.value)
   }
 
+  rotate = () => {
+    let levels = Array.from(document.querySelectorAll('.scene .garage .level'))
+    levels = levels.sort((e1, e2) => e1.style.zIndex - e2.style.zIndex) // sort by z-index
+    levels.unshift(levels.pop()) // rotate one step
+    for (const [index, level] of levels.entries()) {
+      level.style.zIndex = index
+      level.style.transform = `translateZ(${-200 * index}px`
+    }
+  }
 }
 
-const parking = new Parking();
+const parking = new Parking3D()
 
-document.querySelector(".scene").onmousemove = parking.mousemove;
-document.querySelector(".scene").onmousedown = parking.mousedown;
-document.querySelector(".scene").onmouseup = parking.mouseup;
-document.querySelector(".scene").onwheel = parking.wheel;
+document.querySelector('.scene').onmousemove = parking.mousemove
+document.querySelector('.scene').onmousedown = parking.mousedown
+document.querySelector('.scene').onmouseup = parking.mouseup
+document.querySelector('.scene').onwheel = parking.wheel
+document.querySelector('.scene').onkeydown = parking.keydown
 
-lots = document.querySelectorAll(".lot");
-lots.forEach(lot => lot.onclick = parking.click);
+const lots = document.querySelectorAll('.scene .garage .level .lot')
+lots.forEach((lot) => (lot.onclick = parking.click))
 
-document.oncontextmenu = (ev) => { return ev.preventDefault(); } // suppress context menu
+document.oncontextmenu = (ev) => {
+  ev.preventDefault()
+} // suppress context menu
