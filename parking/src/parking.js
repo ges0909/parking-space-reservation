@@ -1,13 +1,13 @@
 class Parking3D {
-  x = 0
-  y = 0 // 25;
-  degX = 0 // 60;
-  degY = 0
-  scale = 1 // .7;
   leftButton = false
   rightButton = false
 
-  constructor() {
+  constructor(x = 200, y = 200, degX = 15, degY = 15, scale = 0.8) {
+    this.x = x
+    this.y = y
+    this.degX = degX
+    this.degY = degY
+    this.scale = scale
     document.querySelector('.garage').style.transform = this.transform() // initial transform
   }
 
@@ -69,7 +69,13 @@ class Parking3D {
   }
 }
 
-const parking = new Parking3D()
+const parking = new Parking3D(
+  (x = 0),
+  (y = 0),
+  (degX = 0),
+  (degY = 0),
+  (scale = 1)
+)
 
 document.querySelector('.scene').onmousemove = parking.mousemove
 document.querySelector('.scene').onmousedown = parking.mousedown
