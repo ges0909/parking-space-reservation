@@ -46,7 +46,7 @@ class Parking3D {
   wheel = (ev) => {
     // WheelEvent
     if (ev.altKey) {
-      this.rotate()
+      this.changeOrder(ev.deltaY)
     } else {
       this.scale = ev.deltaY < 0 ? this.scale - 0.05 : this.scale + 0.05
       document.querySelector('.garage').style.transform = this.transform()
@@ -58,10 +58,15 @@ class Parking3D {
     console.log(ev.target.value)
   }
 
-  rotate = () => {
+  changeOrder = (delta) => {
     let levels = Array.from(document.querySelectorAll('.scene .garage .level'))
-    levels = levels.sort((e1, e2) => e1.style.zIndex - e2.style.zIndex) // sort by z-index
-    levels.unshift(levels.pop()) // rotate one step
+    levels = levels.sort((e1, e2) => e1.style.zIndex - e2.style.zIndex)
+    // levels.unshift(levels.pop()) // rotate
+    if (delta < 0) {
+      levels.splice(levels.length - 1, 0, ...levels.splice(0, 1))
+    } else {
+      levels.splice(0, 0, ...levels.splice(levels.length - 1, 1))
+    }
     for (const [index, level] of levels.entries()) {
       level.style.zIndex = index
       level.style.transform = `translateZ(${-200 * index}px`
@@ -70,14 +75,14 @@ class Parking3D {
 }
 
 const parking = new Parking3D(
-  (x = 0),
-  (y = 0),
+  (x = 300),
+  (y = 100),
   (degX = 0),
   (degY = 0),
-  (scale = 1)
+  (scale = 1.2)
 )
 
-document.querySelector('.scene').onmousemove = parking.mousemove
+document.querySelector('.scene .garage').onmousemove = parking.mousemove
 document.querySelector('.scene').onmousedown = parking.mousedown
 document.querySelector('.scene').onmouseup = parking.mouseup
 document.querySelector('.scene').onwheel = parking.wheel

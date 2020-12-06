@@ -1,7 +1,7 @@
 .scene {
   padding: 10px;
   border: 1px dashed;
-  background: lightgrey;
+  background: snow;
   /* keep aspect ratio when resized */
   box-sizing: border-box;
   overflow: hidden;
